@@ -4,11 +4,18 @@ class CookieClicker {
         this.clickCount = 0;
         this.companionCount = 0;
         this.companionCost = 100;
+
+        this.compounderCount = 0;
+        this.compounderCost = 10;
     }
 
     clickCount = 0;
     companionCount = 0;
     companionCost = 100;
+
+    compounderCount = 0;
+    compounderCost = 10;
+
 
     clickAction() {
         this.clickCount++;
@@ -37,6 +44,8 @@ cookieClicker.clickAction();
 cookieClicker.companionAdd();
 cookieClicker.companionBuy();
 cookieClicker.companionCostIncrease();
+setInterval(cookieClicker.companionAdd(), 1000);
+
 // cookieClicker.setClickCountToZero();
 // cookieClicker.setCompanionCountToZero();
 
