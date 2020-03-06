@@ -7,6 +7,7 @@ class CookieClicker {
 
         this.compounderCount = 0;
         this.compounderCost = 10;
+        this.clickValue = 1;
     }
 
     clickCount = 0;
@@ -15,6 +16,7 @@ class CookieClicker {
 
     compounderCount = 0;
     compounderCost = 10;
+    clickValue = 1;
 
 
     clickAction() {
@@ -29,12 +31,41 @@ class CookieClicker {
         this.companionCost = this.companionCost + this.companionCost * .1;
     }
 
-
     companionBuy() {
         if (this.clickCount >= this.companionCost) {
             this.clickCount = this.clickCount - this.companionCost;
             this.companionAdd();
             this.companionCostIncrease();
+        }
+    }
+
+
+    compounderAdd() {
+        this.compounderCount++;
+    }
+
+    compounderCostIncrease() {
+        this.compounderCost = this.compounderCost + this.compounderCost * .1;
+    }
+
+    compounderBuy() {
+        if (this.clickCount >= this.compounderCost) {
+            this.clickCount = this.clickCount - this.compounderCost;
+            this.compounderAdd();
+            this.compounderCostIncrease();
+        }
+    }
+
+    clickValueIncrease() {
+        this.clickValue = this.clickValue + (this.clickValue * .2);
+    }
+
+    compounderBuy() {
+        if (this.clickCount >= this.compounderCost) {
+            this.clickCount = this.clickCount - this.compounderCost;
+            this.compounderAdd();
+            this.compounderCostIncrease();
+            this.clickValueIncrease();
         }
     }
 }

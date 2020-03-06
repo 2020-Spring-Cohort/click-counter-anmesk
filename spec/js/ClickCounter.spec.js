@@ -123,16 +123,19 @@ describe('Cookie Clicker Game', function(){
         describe('When a Compounder is added, the value of a click should increase by 1.2x', function(){
             it('With 1 Compounder present, the value of a click should increase by 1.2x', function(){
                 sut.clickValue = 1;
-                sut.compounderAdd();
+                sut.clickCount = 10;
+                sut.compounderCount = 0;
+                sut.compounderBuy();
                 expect(sut.clickValue).toBe(1.2);
             });
         })
 
         describe('When more Compounders are added, the value of a click should increase by 1.2x to the xth power', function(){
             it('With x Compounders, the value of a click should increase by 1.2x to the xth power', function(){
-                sut.clickValue = 1;
-                sut.compounderAdd();
-                sut.compounderAdd();
+                sut.clickValue = 1.2;
+                sut.clickCount = 11;
+                sut.compounderCount = 1;
+                sut.compounderBuy();
                 expect(sut.clickValue).toBe(1.44);
             });
         })
