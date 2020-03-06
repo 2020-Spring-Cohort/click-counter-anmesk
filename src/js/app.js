@@ -1,6 +1,6 @@
-class CookieClicker{
+class CookieClicker {
 
-    constructor(){
+    constructor() {
         this.clickCount = 0;
         this.companionCount = 0;
         this.companionCost = 100;
@@ -10,22 +10,33 @@ class CookieClicker{
     companionCount = 0;
     companionCost = 100;
 
-    clickAction(){
+    clickAction() {
         this.clickCount++;
     }
 
-    companionAdd(){
+    companionAdd() {
         this.companionCount++;
-        // if(clickCount >= 100){
-        //     this.clickCount - this.companionCost == this.clickCount;
-        //     this.companionCount++;
-        // }
+    }
+
+    companionCostIncrease() {
+        this.companionCost = this.companionCost + this.companionCost * .1;
+    }
+    
+
+    companionBuy() {
+        if (this.clickCount >= this.companionCost) {
+            this.clickCount = this.clickCount - this.companionCost;
+            this.companionAdd();
+            this.companionCostIncrease();
+        }
     }
 }
 
 let cookieClicker = new CookieClicker();
 cookieClicker.clickAction();
 cookieClicker.companionAdd();
+cookieClicker.companionBuy();
+cookieClicker.companionCostIncrease();
 // cookieClicker.setClickCountToZero();
 // cookieClicker.setCompanionCountToZero();
 
