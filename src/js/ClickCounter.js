@@ -21,7 +21,7 @@ class CookieClicker {
     companionCostIncrease() {
         this.companionCost = this.companionCost + this.companionCost * .1;
     }
-    
+
 
     companionBuy() {
         if (this.clickCount >= this.companionCost) {
