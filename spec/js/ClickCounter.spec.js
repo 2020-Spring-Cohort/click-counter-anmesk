@@ -7,9 +7,12 @@ describe('Cookie Clicker Game', function(){
         sut.clickCount = 0;
         sut.companionCount = 0;
         sut.companionCost = 100;
+
+        sut.compounderCount = 0;
+        sut.compounderCost = 10;
     })
 
-    describe('Click count', function(){
+    describe('Click Tests', function(){
         describe('Upon initializing the game, the click count should be set to 0', function(){
             it('Initial clickCount should be 0', function(){
                 expect(sut.clickCount).toBe(0);
@@ -33,7 +36,7 @@ describe('Cookie Clicker Game', function(){
     })
     
 
-    describe('Companion count', function(){
+    describe('Companion Tests', function(){
         describe('Upon initializing the game, the Companion count should be set to 0', function(){
             it('Initial companionCount should be 0', function(){
                 expect(sut.companionCount).toBe(0);
@@ -70,11 +73,68 @@ describe('Cookie Clicker Game', function(){
                 expect(sut.companionCost).toBe(110);
             });
         })
+
+        // describe('When a Companion is present, the click count should increase every second', function(){
+        //     it('Click count should increment by companion count value every second', function(){
+        //         expect(clickCount(0)).toBe('0');
+        //     });
+        // })
     })
 
-    // describe('When a Companion is present, the click count should increase every second', function(){
-    //     it('Click count should increment by companion count value every second', function(){
-    //         expect(clickCount(0)).toBe('0');
-    //     });
-    // })
+
+    describe('Compounder Tests', function(){
+        describe('Upon initializing the game, the compounder count should be set to 0', function(){
+            it('Initial compounderCount should be 0', function(){
+                expect(sut.compounderCount).toBe(0);
+            });
+        })
+
+        describe('When a Compounder add action is carried out, the Compounder count should increase by 1', function(){
+            it('compounderCount should increment by 1 from 0', function(){
+                sut.compounderAdd();
+                expect(sut.compounderCount).toBe(1);
+            });
+        })
+
+        describe('When the click count reaches 10, the Compounder count should increase by 1', function(){
+            it('Compounder should be purchasable at 10 clicks', function(){
+                sut.clickCount = 10;
+                sut.compounderAdd();
+                expect(sut.compounderCount).toBe(1);
+            });
+        })
+    
+        describe('When the click count is below 10, the Compounder count should not be able to increase', function(){
+            it('Compounder should not be purchasable below 10 clicks', function(){
+                sut.clickCount = 0;
+                sut.compounderBuy();
+                expect(sut.compounderCount).toBe(0);
+            });
+        })
+    
+        describe('When a Compounder is added, its purchase cost should increase by 10%', function(){
+            it('Compounder count cost should increase by 10% upon purchase', function(){
+                sut.clickCount = 10;
+                sut.compounderBuy();
+                expect(sut.compounderCost).toBe(11);
+            });
+        })
+
+        describe('When a Compounder is added, the value of a click should increase by 1.2x', function(){
+            it('With 1 Compounder present, the value of a click should increase by 1.2x', function(){
+                sut.clickValue = 1;
+                sut.compounderAdd();
+                expect(sut.clickValue).toBe(1.2);
+            });
+        })
+
+        describe('When more Compounders are added, the value of a click should increase by 1.2x to the xth power', function(){
+            it('With x Compounders, the value of a click should increase by 1.2x to the xth power', function(){
+                sut.clickValue = 1;
+                sut.compounderAdd();
+                sut.compounderAdd();
+                expect(sut.clickValue).toBe(1.44);
+            });
+        })
+    })
 })
