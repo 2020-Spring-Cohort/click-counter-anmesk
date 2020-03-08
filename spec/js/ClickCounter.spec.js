@@ -145,7 +145,7 @@ describe('Cookie Clicker Game', () => {
 
 // Iteration #3 Tests
 describe("Cookie Clicker DOM Manipulation Tests", () => {
-    testClicker = new ClickCounter
+    testClicker = new CookieClicker
     let testCookieButton
     let testCookieCount
     let testCompanionButton
