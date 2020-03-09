@@ -174,7 +174,7 @@ const createResetButton = (resetButtonElement) => {
 
 
 function showAboutCompany() {
-    if (showAboutCompany.style.display === "block") {
+    if (aboutCompany.style.display === "block") {
         aboutCompany.style.display = "none"
     }
     else {
@@ -183,7 +183,7 @@ function showAboutCompany() {
 }
 
 function showAboutMe() {
-    if (showAboutMe.style.display === "block") {
+    if (aboutMe.style.display === "block") {
         aboutMe.style.display = "none"
     }
     else {

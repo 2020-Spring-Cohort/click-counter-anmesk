@@ -38,6 +38,11 @@ nav a:hover {
     background-color: black;
 }
 
+.about {
+    position: absolute;
+    background-color: aqua;
+}
+
 #ccButtons {
     display: grid;
 }
