@@ -72,7 +72,7 @@ class CookieClicker {
     }
 
     showClickValue() {
-        this.fixClickValue = this.clickCount.toFixed(4)
+        this.fixClickValue = this.clickValue.toFixed(4)
         if (this.clickValue.toString().length > 5) {
             return this.fixClickValue
         }
