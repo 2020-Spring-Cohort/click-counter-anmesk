@@ -10,6 +10,11 @@ html {
     text-align: center;
 }
 
+body {
+    background-image: url('/img/bg.jpg');
+    background-size: cover;
+}
+
 header {
     border-bottom: 2px solid navy;
 }

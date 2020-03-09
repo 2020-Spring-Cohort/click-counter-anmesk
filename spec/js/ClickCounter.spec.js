@@ -143,7 +143,7 @@ describe('Cookie Clicker Game', () => {
     })
 })
 
-// Iteration #3 Tests
+// Iteration #4 Tests
 describe("Cookie Clicker DOM Manipulation Tests", () => {
     let testClicker
     let testCookieButton

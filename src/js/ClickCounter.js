@@ -10,15 +10,6 @@ class CookieClicker {
         this.clickValue = 1
     }
 
-    // clickCount = 0
-    // companionCount = 0
-    // companionCost = 100
-
-    // compounderCount = 0
-    // compounderCost = 10
-    // clickValue = 1
-
-
     clickButton() {
         this.clickCount = this.clickCount + this.clickValue
     }
@@ -75,24 +66,75 @@ class CookieClicker {
 
 
     showClickCount() {
-        this.fixClicks = this.clickCount.toFixed(2)
-        if(this.ClickCount.toString().length > 3) {
-            return this.fixClicks
+        this.fixClickCount = this.clickCount.toFixed(2)
+        if (this.clickCount.toString().length > 3) {
+            return this.fixClickCount
         }
         else {
             return this.clickCount
         }
     }
+
+    showClickValue() {
+        this.fixClickValue = this.clickCount.toFixed(4)
+        if (this.clickValue.toString().length > 5) {
+            return this.fixClickValue
+        }
+        else {
+            return this.clickValue
+        }
+    }
+
+    showCompanionCount() {
+        return this.companionCount
+    }
+    
+    showCompounderCount() {
+        return this.compounderCount
+    }
+
+    showCompanionCost() {
+        this.fixCompanionCost = this.companionCost.toFixed(4)
+        if (this.companionCost.toString().length > 5){
+            return this.fixCompanionCost
+        }
+        else {
+            return this.companionCost
+        }
+    }
+    
+    showCompounderCost() {
+        this.fixCompounderCost = this.compounderCost.toFixed(4)
+        if (this.compounderCost.toString().length > 5){
+            return this.fixCompounderCost
+        }
+        else {
+            return this.compounderCost
+        }
+    }
 }
 
-const updateCookieCounter = (countElement, cookieClicker) => {
-    countElement.innerText = cookieClicker.showCurrentClicks()
+const updateCookieCounter = (cookieCountElement, cookieClicker) => {
+    cookieCountElement.innerText = cookieClicker.showClickCount()
 }
 
-const createCookieButton = (buttonElement, countElement, cookieClicker) => {
-    buttonElement.addEventListener('click', () => {
+const createCookieButton = (cookieButtonElement, cookieCountElement, cookieClicker) => {
+    cookieButtonElement.addEventListener('click', () => {
         cookieClicker.clickButton()
-        updateCookieCounter(countElement, cookieClicker)
+        updateCookieCounter(cookieCountElement, cookieClicker)
+    })
+}
+
+const updateCompanionCounter = (companionCountElement, cookieClicker) => {
+    companionCountElement.innerText = cookieClicker.showCompanionCount()
+}
+
+const createCompanionButton = (companionButtonElement, companionCountElement, companionCostElement, cookieCountElement, cookieClicker) => {
+    companionButtonElement.addEventListener('click', () => {
+        cookieClicker.companionBuy()
+        updateCompanionCounter(companionCountElement, cookieClicker)
+        updateCompanionCost(companionCostElement, cookieClicker)
+        updateCookieCounter(cookieCountElement, cookieClicker)
     })
 }
 
@@ -116,21 +158,24 @@ function showAboutMe() {
 }
 
 
-// let cookieClicker = new CookieClicker()
-// cookieClicker.clickAction()
-// cookieClicker.companionAdd()
-// cookieClicker.companionBuy()
-// cookieClicker.companionCostIncrease()
 const cookieClicker = new CookieClicker()
 // setInterval(cookieClicker.companionAdd(), 1000)
 
 const aboutCompany = document.getElementById("aboutCompany")
 const aboutMe = document.getElementById("aboutMe")
-const buttonElement = document.querySelector('#cookieButton')
-const countElement = document.querySelector('#cookieCount')
+const cookieButtonElement = document.querySelector('#cookieButton')
+const cookieCountElement = document.querySelector('#cookieCount')
+const companionButtonElement = document.querySelector('#companionButton')
+const companionCountElement = document.querySelector('#companionCount')
+const companionCostElement = document.querySelector('#companionCost')
+const compounderButtonElement = document.querySelector('#compounderButton')
+const compounderCountElement = document.querySelector('#compounderCount')
+const compounderCostElement = document.querySelector('#compounderCost')
 
-createCookieButton(buttonElement, countElement, cookieClicker)
-updateCookieCounter(countElement, cookieClicker)
+createCookieButton(cookieButtonElement, cookieCountElement, cookieClicker)
+updateCookieCounter(cookieCountElement, cookieClicker)
+createCompanionButton(companionButtonElement, companionCountElement, companionCostElement, cookieCountElement, cookieClicker)
+updateCompanionButton(companionCountElement, cookieClicker)
 
 // cookieClicker.setClickCountToZero();
 // cookieClicker.setCompanionCountToZero();
