@@ -96,6 +96,26 @@ const createCookieButton = (buttonElement, countElement, cookieClicker) => {
     })
 }
 
+
+function showAboutCompany() {
+    if (showAboutCompany.style.display === "block") {
+        aboutCompany.style.display = "none"
+    }
+    else {
+        aboutCompany.style.display = "block"
+    }
+}
+
+function showAboutMe() {
+    if (showAboutMe.style.display === "block") {
+        aboutMe.style.display = "none"
+    }
+    else {
+        aboutMe.style.display = "block"
+    }
+}
+
+
 // let cookieClicker = new CookieClicker()
 // cookieClicker.clickAction()
 // cookieClicker.companionAdd()
@@ -104,6 +124,8 @@ const createCookieButton = (buttonElement, countElement, cookieClicker) => {
 const cookieClicker = new CookieClicker()
 // setInterval(cookieClicker.companionAdd(), 1000)
 
+const aboutCompany = document.getElementById("aboutCompany")
+const aboutMe = document.getElementById("aboutMe")
 const buttonElement = document.querySelector('#cookieButton')
 const countElement = document.querySelector('#cookieCount')
 
