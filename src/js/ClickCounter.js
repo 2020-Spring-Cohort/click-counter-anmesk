@@ -52,6 +52,7 @@ class CookieClicker {
             this.clickCount = this.clickCount - this.compounderCost
             this.compounderAdd()
             this.compounderCostIncrease()
+            this.clickValueIncrease()
         }
     }
 
@@ -59,16 +60,7 @@ class CookieClicker {
         this.clickValue = this.clickValue + (this.clickValue * .2)
     }
 
-    compounderBuy() {
-        if (this.clickCount >= this.compounderCost) {
-            this.clickCount = this.clickCount - this.compounderCost
-            this.compounderAdd()
-            this.compounderCostIncrease()
-            this.clickValueIncrease()
-        }
-    }
-
-
+    
     showClickCount() {
         this.fixClickCount = this.clickCount.toFixed(2)
         if (this.clickCount.toString().length > 3) {
