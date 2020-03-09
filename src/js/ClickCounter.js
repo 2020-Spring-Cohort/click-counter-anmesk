@@ -138,6 +138,32 @@ const createCompanionButton = (companionButtonElement, companionCountElement, co
     })
 }
 
+const updateCompounderCounter = (compounderCountElement, cookieClicker) => {
+    compounderCountElement.innerText = cookieClicker.showCompounderCount()
+}
+
+const createCompounderButton = (compounderButtonElement, compounderCountElement, clickValueElement, compounderCostElement, cookieCountElement, cookieClicker) => {
+    compounderButtonElement.addEventListener('click', () => {
+        cookieClicker.compounderBuy()
+        updateCompounderCounter(compounderCountElement, cookieClicker)
+        updateClickValue(clickValueElement, cookieClicker)
+        updateCompounderCost(compounderCostElement, cookieClicker)
+        updateCookieCounter(cookieCountElement, cookieClicker)
+    })
+}
+
+const updateClickValue = (clickValueElement, cookieClicker) => {
+    clickValueElement.innerText = cookieClicker.showClickValue()
+}
+
+const updateCompanionCost = (companionCostElement, cookieClicker) => {
+    companionCostElement.innerText = cookieClicker.showCompanionCost()
+}
+
+const updateCompounderCost = (compounderCostElement, cookieClicker) => {
+    compounderCostElement.innerText = cookieClicker.showCompounderCost()
+}
+
 
 function showAboutCompany() {
     if (showAboutCompany.style.display === "block") {
@@ -165,6 +191,7 @@ const aboutCompany = document.getElementById("aboutCompany")
 const aboutMe = document.getElementById("aboutMe")
 const cookieButtonElement = document.querySelector('#cookieButton')
 const cookieCountElement = document.querySelector('#cookieCount')
+const clickValueElement = document.querySelector('#clickValue')
 const companionButtonElement = document.querySelector('#companionButton')
 const companionCountElement = document.querySelector('#companionCount')
 const companionCostElement = document.querySelector('#companionCost')
@@ -175,7 +202,10 @@ const compounderCostElement = document.querySelector('#compounderCost')
 createCookieButton(cookieButtonElement, cookieCountElement, cookieClicker)
 updateCookieCounter(cookieCountElement, cookieClicker)
 createCompanionButton(companionButtonElement, companionCountElement, companionCostElement, cookieCountElement, cookieClicker)
-updateCompanionButton(companionCountElement, cookieClicker)
+updateCompanionCounter(companionCountElement, cookieClicker)
+createCompounderButton(compounderButtonElement, compounderCountElement, clickValueElement, compounderCostElement, cookieCountElement, cookieClicker)
+updateCompounderCounter(compounderCountElement, cookieClicker)
+updateClickValue(clickValueElement, cookieClicker)
 
 // cookieClicker.setClickCountToZero();
 // cookieClicker.setCompanionCountToZero();
